@@ -1,0 +1,16 @@
+{"question": "How much do I pay when I go to the ER?", "doc_id": "emergency-care"}
+{"question": "Is the emergency co-pay charged if I end up admitted to the hospital?", "doc_id": "emergency-care"}
+{"question": "What does a generic medicine cost me for a month?", "doc_id": "prescriptions"}
+{"question": "Can I get a 90-day supply of my blood pressure pills by mail?", "doc_id": "prescriptions"}
+{"question": "How many video doctor visits are free each year?", "doc_id": "telehealth"}
+{"question": "Can a telehealth doctor prescribe controlled substances?", "doc_id": "telehealth"}
+{"question": "How long can I stay in the hospital after a cesarean?", "doc_id": "maternity"}
+{"question": "What is the deadline to add my newborn baby to the plan?", "doc_id": "maternity"}
+{"question": "How many teeth cleanings are covered per year?", "doc_id": "dental"}
+{"question": "Is there a yearly maximum for dental benefits?", "doc_id": "dental"}
+{"question": "How long do I have to appeal a denied claim?", "doc_id": "appeals"}
+{"question": "How fast is an urgent expedited appeal decided?", "doc_id": "appeals"}
+{"question": "What percentage does the plan pay for providers outside the network?", "doc_id": "out-of-network"}
+{"question": "When will I get my reimbursement payment after submitting a bill?", "doc_id": "out-of-network"}
+{"question": "What is the co-pay for a therapy session?", "doc_id": "mental-health"}
+{"question": "Is there a free crisis line I can call?", "doc_id": "mental-health"}
