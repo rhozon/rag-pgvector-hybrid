@@ -29,15 +29,22 @@ class LLM(Protocol):
     def generate(self, question: str, hits: Sequence[Hit]) -> str: ...
 
 
+QUANTITATIVE = re.compile(r"\b(how (much|many|long|fast|soon|often)|percentage|percent|cost|deadline|when|maximum|limit)\b", re.I)
+
+
 class ExtractiveLLM:
-    """No-API baseline: returns the context sentence with the largest overlap of content words."""
+    """No-API baseline: returns the context sentence with the largest overlap of content words.
+    For quantitative questions ("how long", "how much"...) a sentence that carries a number
+    gets a bonus, since the answer is the number."""
 
     def generate(self, question, hits):
         q = set(tokenize(question)) - STOP
+        wants_number = bool(QUANTITATIVE.search(question))
         best, best_score, best_ref = None, 0, 0
         for ref, hit in enumerate(hits, start=1):
             for sentence in re.split(r"(?<=[.!?])\s+", hit.content):
-                score = len(q & set(tokenize(sentence)))
+                overlap = len(q & set(tokenize(sentence)))
+                score = overlap + (1.5 if wants_number and overlap and re.search(r"\d", sentence) else 0)
                 if score > best_score:
                     best, best_score, best_ref = sentence.strip(), score, ref
         return f"{best} [{best_ref}]" if best else NO_ANSWER

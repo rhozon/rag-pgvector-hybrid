@@ -108,5 +108,10 @@ def test_rag_blocks_answers_with_unsupported_numbers(memory_retriever):
     assert "999" in ans.text and "withheld" in ans.text
 
 
+def test_extractive_prefers_the_sentence_with_the_number(memory_retriever):
+    ans = RAG(memory_retriever, ExtractiveLLM()).ask("How long do I have to appeal a denied claim?")
+    assert "180 days" in ans.text
+
+
 def test_extractive_says_it_does_not_know():
     assert ExtractiveLLM().generate("zzz qqq", [Hit(1, "d", 0, "Unrelated text.", 0.0)]) == NO_ANSWER
